@@ -49,6 +49,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 82px;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -57,7 +59,8 @@ body {
   background-color: var(--bg-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 img {
@@ -164,7 +167,8 @@ h1, h2, h3, h4 {
   cursor: pointer;
   border: 2px solid transparent;
   transition: var(--transition);
-  white-space: nowrap;
+  text-align: center;
+  max-width: 100%;
 }
 
 .btn-sm {
@@ -212,7 +216,9 @@ h1, h2, h3, h4 {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
+  max-width: 100vw;
   z-index: 1000;
   background: rgba(27, 26, 32, 0.94);
   backdrop-filter: blur(16px);
@@ -1455,7 +1461,7 @@ h1, h2, h3, h4 {
   .improvements-block,
   .insurance-banner,
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
 
@@ -1486,7 +1492,7 @@ h1, h2, h3, h4 {
   .commitments-grid,
   .portfolio-grid,
   .events-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer-compact {
@@ -1497,22 +1503,53 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
   .section {
     padding: 64px 0;
   }
 
+  .header-inner {
+    height: 68px;
+    gap: 8px;
+  }
+
+  .brand {
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .brand-logo {
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-size: 0.98rem;
+  }
+
+  .brand-role {
+    font-size: 0.72rem;
+  }
+
   .mobile-menu-btn {
     display: flex;
+    flex-shrink: 0;
+    margin-left: auto;
   }
 
   .main-nav {
     position: fixed;
-    top: 78px;
+    top: 68px;
     left: 0;
     right: 0;
+    width: 100%;
+    max-width: 100vw;
     background: var(--bg-dark-deeper);
     flex-direction: column;
-    padding: 24px;
+    padding: 24px 16px;
     gap: 16px;
     border-bottom: 1px solid var(--border-dark);
     transform: translateY(-120%);
@@ -1529,19 +1566,29 @@ h1, h2, h3, h4 {
   }
 
   .hero-section {
-    padding: 104px 0 56px;
+    padding: 92px 0 52px;
+  }
+
+  .hero-kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    flex-wrap: wrap;
+  }
+
+  .kicker-line {
+    width: 20px;
   }
 
   .hero-portrait-card {
-    max-width: 280px;
+    max-width: 260px;
   }
 
   .hero-portrait-img {
-    height: 320px;
+    height: 310px;
   }
 
   .hero-title {
-    font-size: 2.35rem;
+    font-size: 2.2rem;
   }
 
   .hero-actions {
@@ -1554,17 +1601,17 @@ h1, h2, h3, h4 {
 
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
     text-align: center;
   }
 
   .stat-value {
-    font-size: 1.1rem;
+    font-size: 1.02rem;
   }
 
   .stat-label {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
   }
 
   .stat-divider {
@@ -1572,7 +1619,7 @@ h1, h2, h3, h4 {
   }
 
   .image-showcase img {
-    height: 340px;
+    height: 320px;
   }
 
   .commitments-grid,
@@ -1583,7 +1630,7 @@ h1, h2, h3, h4 {
   .services-grid,
   .improvements-photos,
   .form-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .commitments-box,
@@ -1591,7 +1638,7 @@ h1, h2, h3, h4 {
   .improvements-block,
   .insurance-banner,
   .contact-form-card {
-    padding: 28px 20px;
+    padding: 24px 18px;
   }
 
   .insurance-banner-left {
